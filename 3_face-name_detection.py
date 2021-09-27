@@ -22,9 +22,7 @@ faceCascade = cv2.CascadeClassifier(cascadePath)
 font = cv2.FONT_HERSHEY_SIMPLEX
 # initiate id counter
 id = 0
-# names related to ids: example ==> Marcelo: id=1,  etc
-# names = ['None', 'Marcelo', 'Paula', 'Ilza', 'Z', 'W']
-# names = ['None', 'Hamza','Nuran','Ozgur','Elif','Omer']
+# names related to ids: example ==> Hamza: id=1,  etc
 with open("musteriler.txt","r") as dosya:
     musteriler = dosya.readlines()
 names = ["none"]
@@ -66,10 +64,6 @@ while True:
         # img=print_utf8_text(img,(x + 5, y - 25),str(id),color)
         cv2.putText(img, str(id), (x + 5, y - 5), font, 1, (255, 255, 255), 2)
         cv2.putText(img, str(confidence), (x + 5, y + h - 5), font, 1, (255, 255, 0), 1)
-
-    # ekrandaki gözüken isim calisanlar.txt deki isim ile eşleşiyor ise kayıt/loglama yap////
-    # peki sisteme kayıt yaptıran müşteriler ile çalışanlar nasıl ayrılacak?
-    # çalışanlar için ayrı bir dataset ayarlanacak. bu sistemin aynısı sadece çalışanlar için kullanılacak
 
     cv2.imshow('camera', img)
     k = cv2.waitKey(10) & 0xff  # Press 'ESC' for exiting video
