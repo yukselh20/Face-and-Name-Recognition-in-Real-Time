@@ -55,10 +55,10 @@ while True:
         # Check if confidence is less them 100 ==> "0" is perfect match
         if (confidence < 100):
             id = names[id]
-            confidence = "  {0}%".format(round(140 - confidence))
+            confidence = "  {0}%".format(round(100 - confidence))
         else:
             id = "bilinmiyor"
-            confidence = "  {0}%".format(round(140 - confidence))
+            confidence = "  {0}%".format(round(100 - confidence))
 
         color = (255,255,255)
         # img=print_utf8_text(img,(x + 5, y - 25),str(id),color)
