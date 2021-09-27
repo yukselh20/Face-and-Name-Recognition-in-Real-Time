@@ -26,5 +26,3 @@ OpenCV ile yüz tanıma
 •*recognizer.predict()* metodu *id* ve *confidence* değerlerini döndürüyor. id kişi numarası; confidence ise yapılan saptamanın tahmini doğruluk oranıdır.<br/>
 
 ### [Orijinal Projenin Reposu](https://github.com/Mjrovai/OpenCV-Face-Recognition)
-
-
