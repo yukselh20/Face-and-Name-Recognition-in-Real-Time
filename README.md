@@ -1,28 +1,37 @@
-# Face-and-Name-Recognition-in-Real-Time
+Face and Name Recognition in Real-Time
+Real-time face recognition using OpenCV.
 
-OpenCV ile yüz tanıma
+How the Project Works
+This project consists of 3 scripts:
 
-## Proje Nasıl Çalışıyor?
-3 betikten oluşan bu projede;
-1. betikte yüz taraması yapılıp kişilerin ayrı ayrı yüz fotoğrafları çekilir ve "dataset" klasöründe toplanır.
-2. betikte toplanan fotoğraflar ile veri kümemizin eğitimi yapılır.
-3. betikte ise yüz tanıması gerçekleşir.
+Script 1: Performs face scanning, captures individual photos of users, and stores them in the dataset folder.
 
-## Kod İçeriği
-### 1.Betik:<br/>
-•Görüntüleri webcam üzerinden elde edeceğiz. Görüntülerimizin eni 640, yüksekliği 480 piksel olarak tanımlandı.(6 ve 7. satır)<br/>
-•Yüz sınıflandırıcısı 8. satırda bulunmaktadır.<br/>
-•ID, ad, soyad, tcno kısmından aldığımız veriler ise veritabanına veri ekliyormuş ve çekiyormuş gibi simule etmek amacıyla txt dosyasına kayıt yapmaktadır.<br/>
-•While döngüsünde webcam yüzü algılanan kişinin fotoğraflarını çeker ve kayıt yeri ise dataset klasörüdür.<br/>
-•While dongüsü içerisindeki *count* değeri ne kadar ise kaydedilen fotoğraf sayısı o kadar olur ve bu değer artıkça eğitim oranı da artar. Yüz tanıma işleminde kesinlik artar.<br/>
+Script 2: Trains the data set using the collected photos.
 
-### 2.Betik:<br/>
-•Veri setinin eğitimi yapılıp bu betik çalıştıktan sonra oluşacak olan *trainer.yml* dosyasına kaydedilir.<br/>
+Script 3: Executes the final face recognition process.
 
-### 3.Betik:<br/>
-•Yüz tanıma nesnemiz *recognizer*‘a *trainer.yml* dosyası aracılığıyla eğitilmiş verisetimizi yüklüyoruz.<br/>
-•Canlı kamera görüntülerindeki yüzleri de yine haarcascade_frontalface_default.xml filtresi aracılığıyla yakalayacağız. Filtre değişkenimiz faceCascade.<br/>
-•Txt dosyasından isin verilerini çekiyoruz.(isimler fotoğraflar ile eşleşiyor)<br/>
-•*recognizer.predict()* metodu *id* ve *confidence* değerlerini döndürüyor. id kişi numarası; confidence ise yapılan saptamanın tahmini doğruluk oranıdır.<br/>
+Code Overview
+1. Script: Dataset Generation
+Source: Images are captured via webcam. The resolution is defined as 640 (width) by 480 (height) pixels (lines 6 and 7).
 
-### [Orijinal Projenin Reposu](https://github.com/Mjrovai/OpenCV-Face-Recognition)
+Classifier: The face classifier is initialized on line 8.
+
+Data Simulation: ID, first name, last name, and ID number (TC) are saved to a .txt file to simulate database entry and retrieval.
+
+Process: A while loop captures faces from the webcam and saves them to the dataset folder.
+
+Accuracy: The higher the count value (number of photos taken), the better the training accuracy and the precision of the recognition process.
+
+2. Script: Training
+Mechanism: This script trains the data set and generates a trainer.yml file containing the training results.
+
+3. Script: Recognition
+Loading Data: The trained dataset is loaded into the recognizer object via the trainer.yml file.
+
+Detection: Face detection in the live camera feed is handled using the haarcascade_frontalface_default.xml filter (stored in the faceCascade variable).
+
+Mapping: User names are pulled from the .txt file and mapped to the recognized face IDs.
+
+Prediction: The recognizer.predict() method returns the id and confidence level. The id identifies the person, while confidence represents the estimated accuracy of the detection.
+
+Original Project Repository
