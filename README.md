@@ -1,37 +1,28 @@
-Face and Name Recognition in Real-Time
-Real-time face recognition using OpenCV.
+# Face-and-Name-Recognition-in-Real-Time
 
-How the Project Works
-This project consists of 3 scripts:
+Face recognition with OpenCV.
 
-Script 1: Performs face scanning, captures individual photos of users, and stores them in the dataset folder.
+## How the Project Works
+This project consists of 3 main scripts:
+1. **Script 1:** Scans faces, takes individual photos of people, and stores them in the "dataset" folder.
+2. **Script 2:** Trains the data model using the photos collected in the dataset.
+3. **Script 3:** Performs real-time face recognition.
 
-Script 2: Trains the data set using the collected photos.
+## Code Content
+### Script 1:
+• Images are obtained via webcam. The resolution is defined as 640 pixels wide and 480 pixels high (Lines 6 and 7).<br/>
+• The face classifier is located on line 8.<br/>
+• Data received from ID, name, surname, and ID number (tcno) fields are saved to a .txt file to simulate database entry and retrieval.<br/>
+• Inside the "While" loop, the webcam captures photos of the detected person and saves them to the "dataset" folder.<br/>
+• The number of captured photos is determined by the *count* value; as this value increases, the training quality and the accuracy of the recognition process also increase.<br/>
 
-Script 3: Executes the final face recognition process.
+### Script 2:
+• This script trains the dataset and saves the output to a file named *trainer.yml*.<br/>
 
-Code Overview
-1. Script: Dataset Generation
-Source: Images are captured via webcam. The resolution is defined as 640 (width) by 480 (height) pixels (lines 6 and 7).
+### Script 3:
+• We load the trained dataset into our recognition object, *recognizer*, via the *trainer.yml* file.<br/>
+• Live camera faces are detected using the *haarcascade_frontalface_default.xml* filter (assigned to the variable *faceCascade*).<br/>
+• Name data is retrieved from the .txt file (matching names with the captured photos).<br/>
+• The *recognizer.predict()* method returns *id* and *confidence* values. The ID represents the person's number, while confidence represents the estimated accuracy rate of the detection.<br/>
 
-Classifier: The face classifier is initialized on line 8.
-
-Data Simulation: ID, first name, last name, and ID number (TC) are saved to a .txt file to simulate database entry and retrieval.
-
-Process: A while loop captures faces from the webcam and saves them to the dataset folder.
-
-Accuracy: The higher the count value (number of photos taken), the better the training accuracy and the precision of the recognition process.
-
-2. Script: Training
-Mechanism: This script trains the data set and generates a trainer.yml file containing the training results.
-
-3. Script: Recognition
-Loading Data: The trained dataset is loaded into the recognizer object via the trainer.yml file.
-
-Detection: Face detection in the live camera feed is handled using the haarcascade_frontalface_default.xml filter (stored in the faceCascade variable).
-
-Mapping: User names are pulled from the .txt file and mapped to the recognized face IDs.
-
-Prediction: The recognizer.predict() method returns the id and confidence level. The id identifies the person, while confidence represents the estimated accuracy of the detection.
-
-Original Project Repository
+### [Original Project Repository](https://github.com/Mjrovai/OpenCV-Face-Recognition)
